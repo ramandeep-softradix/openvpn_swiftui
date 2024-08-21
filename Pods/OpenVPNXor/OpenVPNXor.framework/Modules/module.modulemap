@@ -1,0 +1,8 @@
+framework module OpenVPNXor {
+   umbrella header "Umbrella-Header.h"
+}
+
+module OpenVPNXor.Swift {
+  header "OpenVPNXor-Swift.h"
+  requires objc
+}
