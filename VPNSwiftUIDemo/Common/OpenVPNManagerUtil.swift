@@ -4,45 +4,88 @@ import OpenVPNXor
 
 class OpenVPNManagerUtil : VPNManagerDelegate {
     static let shared = OpenVPNManagerUtil()
-
+    
     // VPN Status
     enum VPNStatus {
         case invalid, disconnected, connecting, connected, reasserting, disconnecting
     }
-
-    var onVPNStatusChange: ((VPNStatus) -> Void)?
+    
+    var onVPNStatusChange: ((ConnectionStatus) -> Void)?
     var vpnStatus: VPNStatus = .invalid
-
-    private init() {}
-
-    func configureVPN(openVPNConfiguration: String, login: String, pass: String, completion: @escaping (Bool) -> Void) {
+    var vpnStatusLabel:String = ""
+    
+    private init() {
+    }
+    
+    func configureVPN(openVPNConfiguration: Data, login: String, pass: String) {
         // Implement configuration logic here
         // Example: Save configuration to Network Extension preferences
         print("Configuring VPN with config: \(openVPNConfiguration)")
         // Simulate configuration saving
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            completion(true) // Call completion handler with success
+        //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+        //            completion(true) // Call completion handler with success
+        //        }
+        
+        
+        OpenVPNManager.shared.configureVPN(openVPNConfiguration: openVPNConfiguration, login: login, pass: pass) { success in
+            DispatchQueue.main.async {
+                if success {
+                    print("VPN Profile saved successfully.")
+                    
+                    self.connectVPN()
+                } else {
+                    print("Error saving VPN profile.")
+                }
+            }
         }
     }
-
-    func connectVPN(completion: @escaping (String?) -> Void) {
+    
+    func connectVPN() -> Void {
         // Implement VPN connection logic here
         print("Connecting VPN...")
         // Simulate connection
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.vpnStatus = .connected
-            self.onVPNStatusChange?(.connected)
-            completion(nil) // Call completion handler with no error
+        
+        
+        OpenVPNManager.shared.connectVPN { errorDescription in
+            if let error = errorDescription {
+                self.vpnStatus = .invalid
+            } else {
+                self.vpnStatus = .connecting
+            }
         }
     }
-
+    
     func disconnectVPN() {
         // Implement VPN disconnection logic here
         print("Disconnecting VPN...")
         // Simulate disconnection
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-            self.vpnStatus = .disconnected
-            self.onVPNStatusChange?(.disconnected)
+        OpenVPNManager.shared.disconnectVPN()
+        self.vpnStatusLabel = "VPN Disconnected"
+        self.vpnStatus = .disconnected
+    }
+    
+    // Method to set up a listener for VPN status changes
+    func setupVPNStatusListener(callback: @escaping (ConnectionStatus) -> Void) {
+        OpenVPNManager.shared.onVPNStatusChange = { [weak self] status in
+            DispatchQueue.main.async {
+                switch status {
+                case .invalid, .disconnected:
+                    print("VPN Disconnected")
+                    callback(.disconnected)
+                case .connecting:
+                    print("VPN Connecting...")
+                    callback(.connecting)
+                case .connected:
+                    print("VPN Connected")
+                    callback(.connected)
+                case .reasserting:
+                    print("VPN Reconnecting...")
+                    callback(.reconnecting)
+                case .disconnecting:
+                    print("VPN Disconnecting...")
+                    callback(.disconnecting)
+                }
+            }
         }
     }
     
@@ -50,23 +93,23 @@ class OpenVPNManagerUtil : VPNManagerDelegate {
     func VpnManagerConnectionFailed(error: VPNCollectionErrorType, localizedDescription: String) {
         print("VPN connection failed: \(localizedDescription)")
     }
-
+    
     func VpnManagerConnected() {
         print("VPN connected successfully.")
     }
-
+    
     func VpnManagerDisconnected() {
         print("VPN disconnected.")
     }
-
+    
     func VpnManagerProfileSaved() {
         print("VPN profile saved successfully.")
     }
-
+    
     func VpnManagerPacketTransmitted(with bitrate: Bitrate) {
         print("Network Traffic Statistics - \(NetworkTrafficStatistics.formBitrateString(with: bitrate))")
     }
-
+    
     func VpnManagerLogs(log: String?) {
         if let log = log {
             print("VPN Log: \(log)")

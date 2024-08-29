@@ -8,10 +8,18 @@
 
 /* Begin PBXBuildFile section */
 		A8F19AAA40602E60F3A61EB5 /* Pods_VPNSwiftUIDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A811C602ACA8015705BB477 /* Pods_VPNSwiftUIDemo.framework */; };
+		C814A2A02C774339003AE6D8 /* CommonFunctionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814A29F2C774339003AE6D8 /* CommonFunctionality.swift */; };
+		C814A2B72C774DA8003AE6D8 /* london_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C814A2AE2C774DA8003AE6D8 /* london_tcp.ovpn */; };
+		C814A2BA2C774DA8003AE6D8 /* london.conf in Resources */ = {isa = PBXBuildFile; fileRef = C814A2B32C774DA8003AE6D8 /* london.conf */; };
+		C814A2C72C7766CC003AE6D8 /* milan_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C814A2C62C7766CC003AE6D8 /* milan_tcp.ovpn */; };
+		C814A2CC2C777C4D003AE6D8 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814A2CB2C777C4D003AE6D8 /* LocalizableStrings.swift */; };
+		C814A2CE2C777CFC003AE6D8 /* ResourcesStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814A2CD2C777CFC003AE6D8 /* ResourcesStrings.swift */; };
 		C81991652C7684CA00799622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81991642C7684CA00799622 /* AppDelegate.swift */; };
 		C81991692C76880E00799622 /* VPNModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81991682C76880E00799622 /* VPNModel.swift */; };
 		C819916D2C76884700799622 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819916C2C76884700799622 /* VPNManager.swift */; };
 		C81991702C7688C400799622 /* OpenVPNManagerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819916F2C7688C400799622 /* OpenVPNManagerUtil.swift */; };
+		C84B298D2C80A042000A8074 /* hungry_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C84B298B2C80A042000A8074 /* hungry_tcp.ovpn */; };
+		C84B29902C80A2A2000A8074 /* ireland_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C84B298F2C80A2A2000A8074 /* ireland_tcp.ovpn */; };
 		C8712DCC2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8712DCB2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift */; };
 		C8712DCE2C767F09005CE3DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8712DCD2C767F09005CE3DE /* ContentView.swift */; };
 		C8712DD02C767F0B005CE3DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8712DCF2C767F0B005CE3DE /* Assets.xcassets */; };
@@ -19,6 +27,7 @@
 		C8712DE02C768108005CE3DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8712DDF2C768108005CE3DE /* NetworkExtension.framework */; };
 		C8712DE32C768108005CE3DE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8712DE22C768108005CE3DE /* PacketTunnelProvider.swift */; };
 		C8712DE82C768108005CE3DE /* VPNNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C8712DDD2C768108005CE3DE /* VPNNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
+		C894232E2C80FAAF00A576A6 /* IPSecVPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894232D2C80FAAF00A576A6 /* IPSecVPNManager.swift */; };
 		CCE14F228BFBD37AE2EF51F4 /* Pods_VPNNetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66BD73D38B9AED7993F5994E /* Pods_VPNNetworkExtension.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,11 +61,19 @@
 		66BD73D38B9AED7993F5994E /* Pods_VPNNetworkExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNNetworkExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6DDE44EF973BE82DFB87C94B /* Pods-VPNNetworkExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNNetworkExtension.debug.xcconfig"; path = "Target Support Files/Pods-VPNNetworkExtension/Pods-VPNNetworkExtension.debug.xcconfig"; sourceTree = "<group>"; };
 		81A2E0254B1E8A6D1DA00D86 /* Pods-VPNSwiftUIDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwiftUIDemo.debug.xcconfig"; path = "Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		C814A29F2C774339003AE6D8 /* CommonFunctionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctionality.swift; sourceTree = "<group>"; };
+		C814A2AE2C774DA8003AE6D8 /* london_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = london_tcp.ovpn; sourceTree = "<group>"; };
+		C814A2B32C774DA8003AE6D8 /* london.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = london.conf; sourceTree = "<group>"; };
+		C814A2BF2C7759F5003AE6D8 /* VPNSwiftUIDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNSwiftUIDemo.entitlements; sourceTree = "<group>"; };
+		C814A2C62C7766CC003AE6D8 /* milan_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = milan_tcp.ovpn; sourceTree = "<group>"; };
+		C814A2CB2C777C4D003AE6D8 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
+		C814A2CD2C777CFC003AE6D8 /* ResourcesStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesStrings.swift; sourceTree = "<group>"; };
 		C81991642C7684CA00799622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		C81991662C76869700799622 /* VPNSwiftUIDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNSwiftUIDemo.entitlements; sourceTree = "<group>"; };
 		C81991682C76880E00799622 /* VPNModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNModel.swift; sourceTree = "<group>"; };
 		C819916C2C76884700799622 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		C819916F2C7688C400799622 /* OpenVPNManagerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVPNManagerUtil.swift; sourceTree = "<group>"; };
+		C84B298B2C80A042000A8074 /* hungry_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hungry_tcp.ovpn; sourceTree = "<group>"; };
+		C84B298F2C80A2A2000A8074 /* ireland_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ireland_tcp.ovpn; sourceTree = "<group>"; };
 		C8712DC82C767F09005CE3DE /* VPNSwiftUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VPNSwiftUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8712DCB2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNSwiftUIDemoApp.swift; sourceTree = "<group>"; };
 		C8712DCD2C767F09005CE3DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -67,6 +84,7 @@
 		C8712DE22C768108005CE3DE /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		C8712DE42C768108005CE3DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8712DE52C768108005CE3DE /* VPNNetworkExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNNetworkExtension.entitlements; sourceTree = "<group>"; };
+		C894232D2C80FAAF00A576A6 /* IPSecVPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPSecVPNManager.swift; sourceTree = "<group>"; };
 		F70274B00FA03FD2588F989A /* Pods-VPNSwiftUIDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwiftUIDemo.release.xcconfig"; path = "Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -102,6 +120,15 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C814A2CA2C777C33003AE6D8 /* Constants */ = {
+			isa = PBXGroup;
+			children = (
+				C814A2CB2C777C4D003AE6D8 /* LocalizableStrings.swift */,
+				C814A2CD2C777CFC003AE6D8 /* ResourcesStrings.swift */,
+			);
+			path = Constants;
+			sourceTree = "<group>";
+		};
 		C81991672C76880400799622 /* Model */ = {
 			isa = PBXGroup;
 			children = (
@@ -122,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				C819916F2C7688C400799622 /* OpenVPNManagerUtil.swift */,
+				C814A29F2C774339003AE6D8 /* CommonFunctionality.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -129,6 +157,11 @@
 		C8712DBF2C767F09005CE3DE = {
 			isa = PBXGroup;
 			children = (
+				C84B298F2C80A2A2000A8074 /* ireland_tcp.ovpn */,
+				C84B298B2C80A042000A8074 /* hungry_tcp.ovpn */,
+				C814A2C62C7766CC003AE6D8 /* milan_tcp.ovpn */,
+				C814A2B32C774DA8003AE6D8 /* london.conf */,
+				C814A2AE2C774DA8003AE6D8 /* london_tcp.ovpn */,
 				C8712DCA2C767F09005CE3DE /* VPNSwiftUIDemo */,
 				C8712DE12C768108005CE3DE /* VPNNetworkExtension */,
 				C8712DDE2C768108005CE3DE /* Frameworks */,
@@ -149,15 +182,17 @@
 		C8712DCA2C767F09005CE3DE /* VPNSwiftUIDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C894232B2C80FA9200A576A6 /* Protocols */,
+				C814A2CA2C777C33003AE6D8 /* Constants */,
 				C819916E2C7688B700799622 /* Common */,
 				C819916B2C76883000799622 /* ViewModel */,
 				C81991672C76880400799622 /* Model */,
-				C81991662C76869700799622 /* VPNSwiftUIDemo.entitlements */,
 				C8712DCB2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift */,
 				C8712DCD2C767F09005CE3DE /* ContentView.swift */,
 				C8712DCF2C767F0B005CE3DE /* Assets.xcassets */,
 				C8712DD12C767F0B005CE3DE /* Preview Content */,
 				C81991642C7684CA00799622 /* AppDelegate.swift */,
+				C814A2BF2C7759F5003AE6D8 /* VPNSwiftUIDemo.entitlements */,
 			);
 			path = VPNSwiftUIDemo;
 			sourceTree = "<group>";
@@ -188,6 +223,22 @@
 				C8712DE52C768108005CE3DE /* VPNNetworkExtension.entitlements */,
 			);
 			path = VPNNetworkExtension;
+			sourceTree = "<group>";
+		};
+		C894232B2C80FA9200A576A6 /* Protocols */ = {
+			isa = PBXGroup;
+			children = (
+				C894232C2C80FA9C00A576A6 /* IPSec */,
+			);
+			path = Protocols;
+			sourceTree = "<group>";
+		};
+		C894232C2C80FA9C00A576A6 /* IPSec */ = {
+			isa = PBXGroup;
+			children = (
+				C894232D2C80FAAF00A576A6 /* IPSecVPNManager.swift */,
+			);
+			path = IPSec;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -274,7 +325,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C814A2BA2C774DA8003AE6D8 /* london.conf in Resources */,
+				C814A2C72C7766CC003AE6D8 /* milan_tcp.ovpn in Resources */,
+				C814A2B72C774DA8003AE6D8 /* london_tcp.ovpn in Resources */,
 				C8712DD32C767F0B005CE3DE /* Preview Assets.xcassets in Resources */,
+				C84B298D2C80A042000A8074 /* hungry_tcp.ovpn in Resources */,
+				C84B29902C80A2A2000A8074 /* ireland_tcp.ovpn in Resources */,
 				C8712DD02C767F0B005CE3DE /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -359,10 +415,14 @@
 			files = (
 				C81991652C7684CA00799622 /* AppDelegate.swift in Sources */,
 				C8712DCE2C767F09005CE3DE /* ContentView.swift in Sources */,
+				C814A2A02C774339003AE6D8 /* CommonFunctionality.swift in Sources */,
 				C819916D2C76884700799622 /* VPNManager.swift in Sources */,
 				C81991692C76880E00799622 /* VPNModel.swift in Sources */,
 				C81991702C7688C400799622 /* OpenVPNManagerUtil.swift in Sources */,
 				C8712DCC2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift in Sources */,
+				C814A2CC2C777C4D003AE6D8 /* LocalizableStrings.swift in Sources */,
+				C814A2CE2C777CFC003AE6D8 /* ResourcesStrings.swift in Sources */,
+				C894232E2C80FAAF00A576A6 /* IPSecVPNManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -518,6 +578,7 @@
 				DEVELOPMENT_TEAM = EQABG8TYXD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "VPN Demo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -551,6 +612,7 @@
 				DEVELOPMENT_TEAM = EQABG8TYXD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_CFBundleDisplayName = "VPN Demo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

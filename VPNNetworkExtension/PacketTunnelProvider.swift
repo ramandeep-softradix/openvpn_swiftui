@@ -1,36 +1,27 @@
-//
-//  PacketTunnelProvider.swift
-//  VPNNetworkExtension
-//
-//  Created by Softradix on 22/08/24.
-//
-
 import NetworkExtension
+import OpenVPNXor
+import os.log
 
-class PacketTunnelProvider: NEPacketTunnelProvider {
+extension OSLog {
+    private static var subsystem = Bundle.main.bundleIdentifier!
+    /// Logs the view cycles like viewDidLoad.
+    static let viewCycle = OSLog(subsystem: subsystem, category: "PacketTunnel")
+}
+
+class PacketTunnelProvider: OpenVPNPacketTunnelProvider {
 
     override func startTunnel(options: [String : NSObject]?, completionHandler: @escaping (Error?) -> Void) {
-        // Add code here to start the process of connecting the tunnel.
+        /// Add code here to start the process of connecting the tunnel.
+        os_log("startTunnel!", log: OSLog.viewCycle, type: .info)
+        super.startTunnel(options: options, completionHandler: completionHandler)
     }
-    
+
     override func stopTunnel(with reason: NEProviderStopReason, completionHandler: @escaping () -> Void) {
-        // Add code here to start the process of stopping the tunnel.
-        completionHandler()
+        /// Add code here to start the process of stopping the tunnel.
+        super.stopTunnel(with: reason, completionHandler: completionHandler)
     }
-    
+
     override func handleAppMessage(_ messageData: Data, completionHandler: ((Data?) -> Void)?) {
-        // Add code here to handle the message.
-        if let handler = completionHandler {
-            handler(messageData)
-        }
-    }
-    
-    override func sleep(completionHandler: @escaping () -> Void) {
-        // Add code here to get ready to sleep.
-        completionHandler()
-    }
-    
-    override func wake() {
-        // Add code here to wake up.
+        super.handleAppMessage(messageData, completionHandler: completionHandler)
     }
 }
