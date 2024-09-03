@@ -12,21 +12,22 @@ class VPNManager: ObservableObject {
     
     private let openVPNManagerUtil = OpenVPNManagerUtil.shared
     private var timeoutWorkItem: DispatchWorkItem?
+    private let selectedCountryUUIDKey = "selectedCountryUUID"
     
     // MARK: - VPN Configuration
     
     /// List of available VPN countries and their configurations.
     let openVPNCountries = [
-        VPNConfiguration(cityName: "Singapore", cityImage: "sg", configurationFilePath: ResourcesStrings.openVPNSingapurConfigPath, configurationFileType: .ovpn,
-                         name: "Testing", password: "Testing"),
-        VPNConfiguration(cityName: "South-Korea", cityImage: "kr", configurationFilePath: ResourcesStrings.openVPNSouthKoreaConfigPath, configurationFileType: .ovpn,
-                         name: "test", password: "test"),
-        VPNConfiguration(cityName: "United Kingdom", cityImage: "sh", configurationFilePath: ResourcesStrings.openVPNUnitedKingdomConfigPath, configurationFileType: .ovpn,
-                         name: "vpn", password: "vpn"),
-        VPNConfiguration(cityName: "Canada", cityImage: "ca", configurationFilePath: ResourcesStrings.openVPNCanadaConfigPath, configurationFileType: .ovpn,
-                         name: "vpntest", password: "vpntest"),
-        VPNConfiguration(cityName: "Germany", cityImage: "de", configurationFilePath: ResourcesStrings.openVPNGermanyConfigPath, configurationFileType: .ovpn,
-                         name: "Germany", password: "Germany"),
+        VPNConfiguration(uuid: "uuid_singapore", cityName: "Singapore", cityImage: "sg", configurationFilePath: ResourcesStrings.openVPNSingapurConfigPath, configurationFileType: .ovpn,
+                         login: "Testing", password: "Testing"),
+        VPNConfiguration(uuid: "uuid_south_korea", cityName: "South-Korea", cityImage: "kr", configurationFilePath: ResourcesStrings.openVPNSouthKoreaConfigPath, configurationFileType: .ovpn,
+                         login: "test", password: "test"),
+        VPNConfiguration(uuid: "uuid_uk", cityName: "United Kingdom", cityImage: "sh", configurationFilePath: ResourcesStrings.openVPNUnitedKingdomConfigPath, configurationFileType: .ovpn,
+                         login: "vpn", password: "vpn"),
+        VPNConfiguration(uuid: "uuid_canada", cityName: "Canada", cityImage: "ca", configurationFilePath: ResourcesStrings.openVPNCanadaConfigPath, configurationFileType: .ovpn,
+                         login: "vpntest", password: "vpntest"),
+        VPNConfiguration(uuid: "uuid_germany", cityName: "Germany", cityImage: "de", configurationFilePath: ResourcesStrings.openVPNGermanyConfigPath, configurationFileType: .ovpn,
+                         login: "Germany", password: "Germany"),
     ]
     
     // MARK: - Callbacks
@@ -48,6 +49,7 @@ class VPNManager: ObservableObject {
     
     init() {
         setupVPNStatusListener()
+        loadSavedCountry()
     }
     
     // MARK: - Public Methods
@@ -71,6 +73,9 @@ class VPNManager: ObservableObject {
     func onSelectCountry(selectedCountry: VPNConfiguration) {
         errorMessage = nil
         connection.selectedCountry = selectedCountry
+        
+        // Save the selected country's UUID to UserDefaults
+        savedCountry(id: selectedCountry.uuid)
         print("Selected Country: \(connection.selectedCountry?.cityName ?? "")")
     }
     
@@ -161,6 +166,22 @@ class VPNManager: ObservableObject {
             self.onVPNStatusChange?(self.connectionStatus)
         }
     }
-
-  
+    
+    private func savedCountry(id:String) {
+        UserDefaults.standard.set(id, forKey: selectedCountryUUIDKey)
+    }
+    private func removeSavedUId() {
+        UserDefaults.standard.removeObject(forKey: selectedCountryUUIDKey)
+    }
+    
+    
+    /// Loads the saved country UUID from UserDefaults and sets it to the connection.
+    private func loadSavedCountry() {
+        if let uuid = UserDefaults.standard.string(forKey: selectedCountryUUIDKey) {
+            // Assuming you have a way to fetch VPNConfiguration by UUID
+            if let savedCountry = openVPNCountries.first(where: { $0.uuid == uuid }) {
+                connection.selectedCountry = savedCountry
+            }
+        }
+    }
 }

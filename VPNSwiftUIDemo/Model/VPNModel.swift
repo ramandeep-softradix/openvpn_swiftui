@@ -27,10 +27,10 @@ enum ConfigurationFileType: String, Codable {
 }
 
 struct VPNConfiguration: Codable, Identifiable {
-    let id = UUID()
+    var id: UUID
+    let uuid: String
     let cityName: String
     let cityImage: String
-
     let configurationFilePath: String
     let configurationFileType: ConfigurationFileType
     let login: String?
@@ -38,42 +38,44 @@ struct VPNConfiguration: Codable, Identifiable {
 
     // Coding Keys
     enum CodingKeys: String, CodingKey {
-        case cityName, cityImage, configurationFilePath, configurationFileType, name, password
+        case id, uuid, cityName, cityImage, configurationFilePath, configurationFileType, login, password
     }
 
     // Encode to JSON
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
+        try container.encode(id, forKey: .id)
+        try container.encode(uuid, forKey: .uuid)
         try container.encode(cityName, forKey: .cityName)
         try container.encode(cityImage, forKey: .cityImage)
-
         try container.encode(configurationFilePath, forKey: .configurationFilePath)
         try container.encode(configurationFileType.rawValue, forKey: .configurationFileType)
-        try container.encode(login, forKey: .name)
+        try container.encode(login, forKey: .login)
         try container.encode(password, forKey: .password)
     }
 
     // Decode from JSON
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
+        id = try container.decode(UUID.self, forKey: .id)
+        uuid = try container.decode(String.self, forKey: .uuid)
         cityName = try container.decode(String.self, forKey: .cityName)
         cityImage = try container.decode(String.self, forKey: .cityImage)
-
         configurationFilePath = try container.decode(String.self, forKey: .configurationFilePath)
         configurationFileType = try container.decode(ConfigurationFileType.self, forKey: .configurationFileType)
-        login = try container.decodeIfPresent(String.self, forKey: .name)
+        login = try container.decodeIfPresent(String.self, forKey: .login)
         password = try container.decodeIfPresent(String.self, forKey: .password)
     }
 
     // Default initializer
-    init(cityName: String,cityImage:String, configurationFilePath: String, configurationFileType: ConfigurationFileType, name: String? = nil, password: String? = nil) {
+    init(id: UUID = UUID(), uuid: String, cityName: String, cityImage: String, configurationFilePath: String, configurationFileType: ConfigurationFileType, login: String? = nil, password: String? = nil) {
+        self.id = id
+        self.uuid = uuid
         self.cityName = cityName
         self.cityImage = cityImage
-
-        
         self.configurationFilePath = configurationFilePath
         self.configurationFileType = configurationFileType
-        self.login = name
+        self.login = login
         self.password = password
     }
 }

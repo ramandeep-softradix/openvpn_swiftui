@@ -28,7 +28,7 @@ struct ContentView: View {
                 }) {
                     Text(buttonTitle())
                         .font(.title)
-                        .padding()
+                        .padding(8)
                         .background(buttonBackgroundColor())
                         .foregroundColor(.white)
                         .cornerRadius(10)
@@ -49,7 +49,7 @@ struct ContentView: View {
                             }
                             Text(country.cityName)
                             Spacer()
-                            if vpnManager.connection.selectedCountry?.id == country.id {
+                            if vpnManager.connection.selectedCountry?.uuid == country.uuid {
                                 Image(systemName: "checkmark")
                                     .foregroundColor(.blue)
                             }

@@ -1,7 +1,7 @@
 import Foundation
 
 struct LocalizableStrings {
-    static let vpnAppTitle = "VPN App"
+    static let vpnAppTitle = "Open VPN"
     static let selectProtocol = "Select Protocol"
     static let connecting = "Connecting..."
     static let disconnect = "Disconnect"
