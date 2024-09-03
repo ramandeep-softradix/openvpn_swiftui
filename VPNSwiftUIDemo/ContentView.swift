@@ -61,7 +61,7 @@ struct ContentView: View {
                                 alertMessage = LocalizableStrings.changeLocationAlert
                                 showAlert = true
                             } else {
-                                vpnManager.onSelectCountry(selecetdCountry: country)
+                                vpnManager.onSelectCountry(selectedCountry: country)
                             }
                         }
                     }
@@ -109,25 +109,5 @@ struct ContentView: View {
         case .disconnecting:
             return Color.gray
         }
-    }
-}
-struct CircleLoader: View {
-
-    // MARK: - Properties
-
-    @State private var angle:Double = 0.0
-
-    // MARK: - Body
-
-    var body: some View {
-        Circle()
-            .trim(from: 0.1,to: 1.0)
-            .stroke(style: StrokeStyle(lineWidth: 8,lineCap: .round,lineJoin: .round)).foregroundColor(.black)
-            .rotationEffect(Angle(degrees: angle))
-            .onAppear{
-                withAnimation(Animation.linear(duration: 4.0).repeatForever(autoreverses: false)) {
-                    angle = 360
-                }
-            }
     }
 }

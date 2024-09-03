@@ -1,20 +1,21 @@
 import SwiftUI
 
+/// Manages VPN connection and status.
 class VPNManager: ObservableObject {
+    // MARK: - Published Properties
+    
     @Published var connection = VPNConnection(isConnected: false, selectedCountry: nil, selectedProtocol: .openVPN)
-    @Published var connectionStatus: ConnectionStatus = .disconnected {
-        didSet {
-            saveConnectionStatusToLocalStorage()
-        }
-    }
+    @Published var connectionStatus: ConnectionStatus = .disconnected
     @Published var errorMessage: String?
+    
+    // MARK: - Private Properties
     
     private let openVPNManagerUtil = OpenVPNManagerUtil.shared
     private var timeoutWorkItem: DispatchWorkItem?
     
-    // Define the key for storing the connection status in UserDefaults
-    private let connectionStatusKey = "VPNConnectionStatus"
+    // MARK: - VPN Configuration
     
+    /// List of available VPN countries and their configurations.
     let openVPNCountries = [
         VPNConfiguration(cityName: "Singapore", cityImage: "sg", configurationFilePath: ResourcesStrings.openVPNSingapurConfigPath, configurationFileType: .ovpn,
                          name: "Testing", password: "Testing"),
@@ -28,9 +29,14 @@ class VPNManager: ObservableObject {
                          name: "Germany", password: "Germany"),
     ]
     
-    // Define a callback closure
+    // MARK: - Callbacks
+    
+    /// Callback closure for VPN status changes.
     var onVPNStatusChange: ((ConnectionStatus) -> Void)?
     
+    // MARK: - Computed Properties
+    
+    /// Returns available countries based on the selected VPN protocol.
     var availableCountries: [VPNConfiguration] {
         switch connection.selectedProtocol {
         case .openVPN:
@@ -38,17 +44,21 @@ class VPNManager: ObservableObject {
         }
     }
     
+    // MARK: - Initializer
+    
     init() {
-        // Retrieve the connection status from local storage on initialization
-        loadConnectionStatusFromLocalStorage()
+        setupVPNStatusListener()
     }
     
+    // MARK: - Public Methods
+    
+    /// Toggles the VPN connection based on current connection status.
     func toggleConnection() {
         if connection.isConnected {
             disconnect()
         } else {
             if connection.selectedCountry != nil {
-                errorMessage = ""
+                errorMessage = nil
                 connectionStatus = .connecting
                 connect()
             } else {
@@ -57,9 +67,26 @@ class VPNManager: ObservableObject {
         }
     }
     
+    /// Handles the selection of a VPN country.
+    func onSelectCountry(selectedCountry: VPNConfiguration) {
+        errorMessage = nil
+        connection.selectedCountry = selectedCountry
+        print("Selected Country: \(connection.selectedCountry?.cityName ?? "")")
+    }
+    
+    /// Clears the error message when switching protocols.
+    func onTapProtocolSegmentedController() {
+        errorMessage = nil
+    }
+    
+    // MARK: - Private Methods
+    
+    /// Connects to the selected VPN protocol.
     private func connect() {
+        // Cancel any existing timeout work item
         timeoutWorkItem?.cancel()
         
+        // Create a new timeout work item
         timeoutWorkItem = DispatchWorkItem { [weak self] in
             guard let self = self else { return }
             if self.connectionStatus == .connecting {
@@ -68,12 +95,15 @@ class VPNManager: ObservableObject {
             }
         }
         
+        // Connect based on the selected VPN protocol
         if connection.selectedProtocol == .openVPN {
             connectToOpenVPN()
         }
     }
     
+    /// Disconnects from the VPN.
     private func disconnect() {
+        // Cancel any existing timeout work item
         timeoutWorkItem?.cancel()
         
         if connection.selectedProtocol == .openVPN {
@@ -85,41 +115,20 @@ class VPNManager: ObservableObject {
         }
     }
     
-    func onSelectCountry(selecetdCountry: VPNConfiguration) {
-        errorMessage = ""
-        connection.selectedCountry = selecetdCountry
-        print("Selected Country: \(connection.selectedCountry?.cityName ?? "")")
-    }
-    
-    func onTapProtocolSegmentedController() {
-        errorMessage = nil // Clear the error message when switching protocols
-    }
-    
-    func connectToOpenVPN() {
-        let configurationFileContent = extractVPNConfigurationFile(forResource: connection.selectedCountry?.configurationFilePath ?? "", ofType: connection.selectedCountry?.configurationFileType.rawValue ?? "ovpn") ?? Data()
+    /// Configures and connects to OpenVPN using the selected country's configuration.
+    private func connectToOpenVPN() {
+        let configurationFileContent = extractVPNConfigurationFile(
+            forResource: connection.selectedCountry?.configurationFilePath ?? "",
+            ofType: connection.selectedCountry?.configurationFileType.rawValue ?? "ovpn"
+        ) ?? Data()
         
         let login = connection.selectedCountry?.login ?? ""
         let pass = connection.selectedCountry?.password ?? ""
-        openVPNManagerUtil.setupVPNStatusListener { status in
-            self.connection.isConnected = false
-            
-            switch status {
-            case .disconnected:
-                self.connectionStatus = .disconnected
-                self.timeoutWorkItem?.cancel() // Cancel the timeout if disconnected
-            case .connecting:
-                self.connectionStatus = .connecting
-            case .connected:
-                self.connectionStatus = .connected
-                self.connection.isConnected = true
-                self.timeoutWorkItem?.cancel() // Cancel the timeout if connected
-            case .reconnecting:
-                self.connectionStatus = .connecting
-            case .disconnecting:
-                self.connectionStatus = .disconnecting
-            }
-        }
         
+        // Setup VPN status listener
+        setupVPNStatusListener()
+        
+        // Configure VPN
         openVPNManagerUtil.configureVPN(openVPNConfiguration: configurationFileContent, login: login, pass: pass)
         
         // Schedule the timeout task after 30 seconds
@@ -128,25 +137,30 @@ class VPNManager: ObservableObject {
         }
     }
     
-    func dataToString(data: Data) -> String? {
-        return String(data: data, encoding: .utf8)
-    }
-    
-    // MARK: - Local Storage
-    
-    private func saveConnectionStatusToLocalStorage() {
-        let isConnected = connectionStatus == .connected
-        UserDefaults.standard.set(isConnected, forKey: connectionStatusKey)
-    }
-    
-    private func loadConnectionStatusFromLocalStorage() {
-        let isConnected = UserDefaults.standard.bool(forKey: connectionStatusKey)
-        if isConnected {
-            connectionStatus = .connected
-            connection.isConnected = true
-        } else {
-            connectionStatus = .disconnected
-            connection.isConnected = false
+    /// Sets up the VPN status listener.
+    private func setupVPNStatusListener() {
+        openVPNManagerUtil.setupVPNStatusListener { [weak self] status in
+            guard let self = self else { return }
+            self.connection.isConnected = false
+            switch status {
+            case .disconnected:
+                self.connectionStatus = .disconnected
+                self.timeoutWorkItem?.cancel()
+            case .connecting:
+                self.connectionStatus = .connecting
+            case .connected:
+                self.connectionStatus = .connected
+                self.connection.isConnected = true
+                self.timeoutWorkItem?.cancel()
+            case .reconnecting:
+                self.connectionStatus = .connecting
+            case .disconnecting:
+                self.connectionStatus = .disconnecting
+            }
+            // Call the status change callback if provided
+            self.onVPNStatusChange?(self.connectionStatus)
         }
     }
+
+  
 }

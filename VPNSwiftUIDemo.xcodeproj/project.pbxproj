@@ -64,6 +64,7 @@
 		C6B2D0DF2C87174B00F4D74A /* united-kingdom.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "united-kingdom.ovpn"; sourceTree = "<group>"; };
 		C6B2D0E12C871A9100F4D74A /* canada.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = canada.ovpn; sourceTree = "<group>"; };
 		C6B2D0E32C871ABF00F4D74A /* germany.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germany.ovpn; sourceTree = "<group>"; };
+		C6B2D0E72C87360A00F4D74A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C814A29F2C774339003AE6D8 /* CommonFunctionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctionality.swift; sourceTree = "<group>"; };
 		C814A2BF2C7759F5003AE6D8 /* VPNSwiftUIDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNSwiftUIDemo.entitlements; sourceTree = "<group>"; };
 		C814A2CB2C777C4D003AE6D8 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
@@ -180,6 +181,7 @@
 		C8712DCA2C767F09005CE3DE /* VPNSwiftUIDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C6B2D0E72C87360A00F4D74A /* Info.plist */,
 				C894232B2C80FA9200A576A6 /* Protocols */,
 				C814A2CA2C777C33003AE6D8 /* Constants */,
 				C819916E2C7688B700799622 /* Common */,
@@ -566,6 +568,7 @@
 				DEVELOPMENT_TEAM = EQABG8TYXD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VPNSwiftUIDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "VPN Demo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -600,6 +603,7 @@
 				DEVELOPMENT_TEAM = EQABG8TYXD;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = VPNSwiftUIDemo/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "VPN Demo";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
