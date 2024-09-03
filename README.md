@@ -6,9 +6,9 @@ This project demonstrates how to integrate OpenVPN into a SwiftUI application. I
 
 1. OpenVPN Integration: Establish and manage OpenVPN connections.
 
-SwiftUI Interface: Intuitive UI components to interact with VPN connections.
+2. SwiftUI Interface: Intuitive UI components to interact with VPN connections.
 
-State Management: Efficient management of VPN connection states using SwiftUI.
+3. State Management: Efficient management of VPN connection states using SwiftUI.
 
 ## Description
 
