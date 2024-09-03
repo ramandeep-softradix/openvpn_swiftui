@@ -3,6 +3,10 @@ platform :ios, '14.0'
 
 def sharedPods
   pod 'OpenVPNXor', '1.8'
+  pod 'Alamofire'
+  pod 'ObjectMapper'
+  pod 'CSV.swift', '~> 2.4.3'
+
 end
 
 target 'VPNNetworkExtension' do

@@ -1,16 +1,28 @@
 PODS:
+  - Alamofire (5.9.1)
+  - CSV.swift (2.4.3)
+  - ObjectMapper (4.4.2)
   - OpenVPNXor (1.8)
 
 DEPENDENCIES:
+  - Alamofire
+  - CSV.swift (~> 2.4.3)
+  - ObjectMapper
   - OpenVPNXor (= 1.8)
 
 SPEC REPOS:
   trunk:
+    - Alamofire
+    - CSV.swift
+    - ObjectMapper
     - OpenVPNXor
 
 SPEC CHECKSUMS:
+  Alamofire: f36a35757af4587d8e4f4bfa223ad10be2422b8c
+  CSV.swift: d38741b349c067b4a6db42237cb0e2974d21ccac
+  ObjectMapper: e6e4d91ff7f2861df7aecc536c92d8363f4c9677
   OpenVPNXor: 0707353e47e410acee45657ea069d19f4e7374ee
 
-PODFILE CHECKSUM: d628c742b65b264559007259812e01375dc2d38c
+PODFILE CHECKSUM: 147db4d527241d568ebc81ff8eda0841f4a0d2b3
 
 COCOAPODS: 1.15.2

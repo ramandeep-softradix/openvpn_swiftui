@@ -2,40 +2,30 @@ import SwiftUI
 
 class VPNManager: ObservableObject {
     @Published var connection = VPNConnection(isConnected: false, selectedCountry: nil, selectedProtocol: .openVPN)
-    @Published var connectionStatus: ConnectionStatus = .disconnected
+    @Published var connectionStatus: ConnectionStatus = .disconnected {
+        didSet {
+            saveConnectionStatusToLocalStorage()
+        }
+    }
     @Published var errorMessage: String?
     
     private let openVPNManagerUtil = OpenVPNManagerUtil.shared
     private var timeoutWorkItem: DispatchWorkItem?
     
-    private let ipSecVPNManager = IPSecVPNManager.shared // Use IPSecVPNManager
-
-    
-    // Define your VPN configurations here
-    let wireGuardCountries = [
-        VPNConfiguration(cityName: "New York", configurationFilePath: ResourcesStrings.wireGuardNYConfigPath, configurationFileType: .conf),
-        VPNConfiguration(cityName: "London", configurationFilePath: ResourcesStrings.wireGuardLondonConfigPath, configurationFileType: .conf)
-    ]
+    // Define the key for storing the connection status in UserDefaults
+    private let connectionStatusKey = "VPNConnectionStatus"
     
     let openVPNCountries = [
-        VPNConfiguration(cityName: "Gloucester, United Kingdom", configurationFilePath: ResourcesStrings.openVPNGloucesterConfigPath, configurationFileType: .ovpn,
+        VPNConfiguration(cityName: "Singapore", cityImage: "sg", configurationFilePath: ResourcesStrings.openVPNSingapurConfigPath, configurationFileType: .ovpn,
+                         name: "Testing", password: "Testing"),
+        VPNConfiguration(cityName: "South-Korea", cityImage: "kr", configurationFilePath: ResourcesStrings.openVPNSouthKoreaConfigPath, configurationFileType: .ovpn,
                          name: "test", password: "test"),
-        VPNConfiguration(cityName: "Angeles, Philippines", configurationFilePath: ResourcesStrings.openVPNAngelesConfigPath, configurationFileType: .ovpn,
-                         name: "softradix", password: "softradix"),
-        VPNConfiguration(cityName: "Budapest, Hungary", configurationFilePath: ResourcesStrings.openVPnBudapestConfigPath, configurationFileType: .ovpn,
-                         name: "softradix", password: "softradix"),
-        VPNConfiguration(cityName: "Milan, Italy", configurationFilePath: ResourcesStrings.openVPMilanConfigPath, configurationFileType: .ovpn,
-                         name: "softradix", password: "softradix")
-    ]
-    
-    let ikev2Countries = [
-        VPNConfiguration(cityName: "San Francisco", configurationFilePath: ResourcesStrings.ikev2SFConfigPath, configurationFileType: .mobileconfig),
-        VPNConfiguration(cityName: "Tokyo", configurationFilePath: ResourcesStrings.ikev2TokyoConfigPath, configurationFileType: .mobileconfig)
-    ]
-    
-    let ipsecCountries = [
-        VPNConfiguration(cityName: "Berlin", configurationFilePath: ResourcesStrings.ipsecBerlinConfigPath, configurationFileType: .mobileconfig),
-        VPNConfiguration(cityName: "Sydney", configurationFilePath: ResourcesStrings.ipsecSydneyConfigPath, configurationFileType: .mobileconfig)
+        VPNConfiguration(cityName: "United Kingdom", cityImage: "sh", configurationFilePath: ResourcesStrings.openVPNUnitedKingdomConfigPath, configurationFileType: .ovpn,
+                         name: "vpn", password: "vpn"),
+        VPNConfiguration(cityName: "Canada", cityImage: "ca", configurationFilePath: ResourcesStrings.openVPNCanadaConfigPath, configurationFileType: .ovpn,
+                         name: "vpntest", password: "vpntest"),
+        VPNConfiguration(cityName: "Germany", cityImage: "de", configurationFilePath: ResourcesStrings.openVPNGermanyConfigPath, configurationFileType: .ovpn,
+                         name: "Germany", password: "Germany"),
     ]
     
     // Define a callback closure
@@ -43,15 +33,14 @@ class VPNManager: ObservableObject {
     
     var availableCountries: [VPNConfiguration] {
         switch connection.selectedProtocol {
-        case .wireGuard:
-            return wireGuardCountries
         case .openVPN:
             return openVPNCountries
-        case .ikev2:
-            return ikev2Countries
-        case .ipsec:
-            return ipsecCountries
         }
+    }
+    
+    init() {
+        // Retrieve the connection status from local storage on initialization
+        loadConnectionStatusFromLocalStorage()
     }
     
     func toggleConnection() {
@@ -68,7 +57,6 @@ class VPNManager: ObservableObject {
         }
     }
     
-    
     private func connect() {
         timeoutWorkItem?.cancel()
         
@@ -82,14 +70,8 @@ class VPNManager: ObservableObject {
         
         if connection.selectedProtocol == .openVPN {
             connectToOpenVPN()
-        } else if connection.selectedProtocol == .wireGuard {
-            // Existing WireGuard connection logic...
-        } else if connection.selectedProtocol == .ikev2 || connection.selectedProtocol == .ipsec {
-            connectToIPSec()
         }
     }
-    
-    
     
     private func disconnect() {
         timeoutWorkItem?.cancel()
@@ -100,14 +82,8 @@ class VPNManager: ObservableObject {
                 self.connection.isConnected = false
                 self.connectionStatus = .disconnected
             }
-        } else if connection.selectedProtocol == .wireGuard {
-            // Existing WireGuard disconnection logic...
-        } else if connection.selectedProtocol == .ikev2 || connection.selectedProtocol == .ipsec {
-            ipSecVPNManager.disconnectVPN()
         }
     }
-    
-    
     
     func onSelectCountry(selecetdCountry: VPNConfiguration) {
         errorMessage = ""
@@ -115,18 +91,12 @@ class VPNManager: ObservableObject {
         print("Selected Country: \(connection.selectedCountry?.cityName ?? "")")
     }
     
-    func onTapProtocolSegmentedController(){
+    func onTapProtocolSegmentedController() {
         errorMessage = nil // Clear the error message when switching protocols
     }
     
-    func connectToOpenVPN(){
-        let configurationFileContent = extractVPNConfigurationFile(forResource: connection.selectedCountry?.configurationFilePath ?? "", ofType: connection.selectedCountry?.configurationFileType.rawValue ?? "ovpn")
-        
-        guard let configurationFileData = configurationFileContent else {
-            errorMessage = LocalizableStrings.failedToLoadConfig
-            connectionStatus = .disconnected
-            return
-        }
+    func connectToOpenVPN() {
+        let configurationFileContent = extractVPNConfigurationFile(forResource: connection.selectedCountry?.configurationFilePath ?? "", ofType: connection.selectedCountry?.configurationFileType.rawValue ?? "ovpn") ?? Data()
         
         let login = connection.selectedCountry?.login ?? ""
         let pass = connection.selectedCountry?.password ?? ""
@@ -149,7 +119,8 @@ class VPNManager: ObservableObject {
                 self.connectionStatus = .disconnecting
             }
         }
-        openVPNManagerUtil.configureVPN(openVPNConfiguration: configurationFileData, login: login, pass: pass)
+        
+        openVPNManagerUtil.configureVPN(openVPNConfiguration: configurationFileContent, login: login, pass: pass)
         
         // Schedule the timeout task after 30 seconds
         if let timeoutWorkItem = timeoutWorkItem {
@@ -157,42 +128,25 @@ class VPNManager: ObservableObject {
         }
     }
     
-    private func connectToIPSec() {
-           let configurationFileContent = extractVPNConfigurationFile(forResource: connection.selectedCountry?.configurationFilePath ?? "", ofType: connection.selectedCountry?.configurationFileType.rawValue ?? "mobileconfig")
-           
-           guard let configurationFileData = configurationFileContent else {
-               errorMessage = LocalizableStrings.failedToLoadConfig
-               connectionStatus = .disconnected
-               return
-           }
-           
-           ipSecVPNManager.setupVPNStatusListener { status in
-               self.connection.isConnected = false
-               
-               switch status {
-               case .disconnected:
-                   self.connectionStatus = .disconnected
-                   self.timeoutWorkItem?.cancel()
-               case .connecting:
-                   self.connectionStatus = .connecting
-               case .connected:
-                   self.connectionStatus = .connected
-                   self.connection.isConnected = true
-                   self.timeoutWorkItem?.cancel()
-               case .disconnecting:
-                   self.connectionStatus = .disconnecting
-               default:
-                   break
-               }
-           }
-           
-           ipSecVPNManager.configureVPN(configurationFile: configurationFileData)
-           ipSecVPNManager.connectVPN()
-           
-           if let timeoutWorkItem = timeoutWorkItem {
-               DispatchQueue.main.asyncAfter(deadline: .now() + 30, execute: timeoutWorkItem)
-           }
-       }
+    func dataToString(data: Data) -> String? {
+        return String(data: data, encoding: .utf8)
+    }
     
+    // MARK: - Local Storage
     
+    private func saveConnectionStatusToLocalStorage() {
+        let isConnected = connectionStatus == .connected
+        UserDefaults.standard.set(isConnected, forKey: connectionStatusKey)
+    }
+    
+    private func loadConnectionStatusFromLocalStorage() {
+        let isConnected = UserDefaults.standard.bool(forKey: connectionStatusKey)
+        if isConnected {
+            connectionStatus = .connected
+            connection.isConnected = true
+        } else {
+            connectionStatus = .disconnected
+            connection.isConnected = false
+        }
+    }
 }

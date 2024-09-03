@@ -2,10 +2,7 @@
 import Foundation
 
 enum VPNProtocol: String {
-    case wireGuard = "WireGuard"
     case openVPN = "OpenVPN"
-    case ikev2 = "IKEv2"
-    case ipsec = "IPsec"
 }
 
 enum ConnectionStatus {
@@ -32,6 +29,8 @@ enum ConfigurationFileType: String, Codable {
 struct VPNConfiguration: Codable, Identifiable {
     let id = UUID()
     let cityName: String
+    let cityImage: String
+
     let configurationFilePath: String
     let configurationFileType: ConfigurationFileType
     let login: String?
@@ -39,13 +38,15 @@ struct VPNConfiguration: Codable, Identifiable {
 
     // Coding Keys
     enum CodingKeys: String, CodingKey {
-        case cityName, configurationFilePath, configurationFileType, name, password
+        case cityName, cityImage, configurationFilePath, configurationFileType, name, password
     }
 
     // Encode to JSON
     func encode(to encoder: Encoder) throws {
         var container = encoder.container(keyedBy: CodingKeys.self)
         try container.encode(cityName, forKey: .cityName)
+        try container.encode(cityImage, forKey: .cityImage)
+
         try container.encode(configurationFilePath, forKey: .configurationFilePath)
         try container.encode(configurationFileType.rawValue, forKey: .configurationFileType)
         try container.encode(login, forKey: .name)
@@ -56,6 +57,8 @@ struct VPNConfiguration: Codable, Identifiable {
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         cityName = try container.decode(String.self, forKey: .cityName)
+        cityImage = try container.decode(String.self, forKey: .cityImage)
+
         configurationFilePath = try container.decode(String.self, forKey: .configurationFilePath)
         configurationFileType = try container.decode(ConfigurationFileType.self, forKey: .configurationFileType)
         login = try container.decodeIfPresent(String.self, forKey: .name)
@@ -63,8 +66,11 @@ struct VPNConfiguration: Codable, Identifiable {
     }
 
     // Default initializer
-    init(cityName: String, configurationFilePath: String, configurationFileType: ConfigurationFileType, name: String? = nil, password: String? = nil) {
+    init(cityName: String,cityImage:String, configurationFilePath: String, configurationFileType: ConfigurationFileType, name: String? = nil, password: String? = nil) {
         self.cityName = cityName
+        self.cityImage = cityImage
+
+        
         self.configurationFilePath = configurationFilePath
         self.configurationFileType = configurationFileType
         self.login = name

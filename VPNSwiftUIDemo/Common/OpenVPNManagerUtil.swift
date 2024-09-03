@@ -18,20 +18,11 @@ class OpenVPNManagerUtil : VPNManagerDelegate {
     }
     
     func configureVPN(openVPNConfiguration: Data, login: String, pass: String) {
-        // Implement configuration logic here
-        // Example: Save configuration to Network Extension preferences
-        print("Configuring VPN with config: \(openVPNConfiguration)")
-        // Simulate configuration saving
-        //        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-        //            completion(true) // Call completion handler with success
-        //        }
-        
-        
+        print("Configuring VPN with config: \(openVPNConfiguration.base64EncodedString())")
         OpenVPNManager.shared.configureVPN(openVPNConfiguration: openVPNConfiguration, login: login, pass: pass) { success in
             DispatchQueue.main.async {
                 if success {
                     print("VPN Profile saved successfully.")
-                    
                     self.connectVPN()
                 } else {
                     print("Error saving VPN profile.")
@@ -47,7 +38,7 @@ class OpenVPNManagerUtil : VPNManagerDelegate {
         
         
         OpenVPNManager.shared.connectVPN { errorDescription in
-            if let error = errorDescription {
+            if errorDescription != nil {
                 self.vpnStatus = .invalid
             } else {
                 self.vpnStatus = .connecting
@@ -88,8 +79,9 @@ class OpenVPNManagerUtil : VPNManagerDelegate {
             }
         }
     }
-    
+
     // Example delegate methods
+
     func VpnManagerConnectionFailed(error: VPNCollectionErrorType, localizedDescription: String) {
         print("VPN connection failed: \(localizedDescription)")
     }

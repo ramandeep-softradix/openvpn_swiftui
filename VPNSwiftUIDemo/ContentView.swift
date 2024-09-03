@@ -5,23 +5,15 @@ struct ContentView: View {
     @State private var showAlert = false
     @State private var alertMessage: String?
 
-//    let protocols = ["WireGuard", "OpenVPN"]
-//    let protocols = ["OpenVPN"]
+    let protocols = ["OpenVPN"]
     
-    // Add IKEv2 and IPsec to the list of protocols
-      let protocols = ["WireGuard", "OpenVPN", "IKEv2", "IPsec"]
-
     var body: some View {
         NavigationView {
             VStack {
-                Text(LocalizableStrings.vpnAppTitle)
-                    .font(.largeTitle)
-                    .padding()
-                
                 // Protocol Picker
                 Picker(LocalizableStrings.selectProtocol, selection: $vpnManager.connection.selectedProtocol) {
                     ForEach(protocols, id: \.self) { protocolName in
-                        Text(protocolName).tag(VPNProtocol(rawValue: protocolName) ?? .wireGuard)
+                        Text(protocolName).tag(VPNProtocol(rawValue: protocolName))
                     }
                 }
                 .pickerStyle(SegmentedPickerStyle())
@@ -50,32 +42,34 @@ struct ContentView: View {
                         .foregroundColor(.red)
                         .padding()
                 }
-                
-                // Country List
-                List(vpnManager.availableCountries) { country in
-                    HStack {
-                        Text(country.cityName)
-                        Spacer()
-                        if vpnManager.connection.selectedCountry?.id == country.id {
-                            Image(systemName: "checkmark")
-                                .foregroundColor(.blue)
+                    List(vpnManager.availableCountries) { country in
+                        HStack(spacing:10) {
+                            VStack{
+                                Image(country.cityImage).resizable().frame(width: 25,height: 25)
+                            }
+                            Text(country.cityName)
+                            Spacer()
+                            if vpnManager.connection.selectedCountry?.id == country.id {
+                                Image(systemName: "checkmark")
+                                    .foregroundColor(.blue)
+                            }
+                        }.padding(5)
+                           
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            if vpnManager.connectionStatus == .connected {
+                                alertMessage = LocalizableStrings.changeLocationAlert
+                                showAlert = true
+                            } else {
+                                vpnManager.onSelectCountry(selecetdCountry: country)
+                            }
                         }
                     }
-                    .contentShape(Rectangle())
-                    .onTapGesture {
-                        if vpnManager.connectionStatus == .connected {
-                            // Show an alert if the VPN is connected
-                            alertMessage = LocalizableStrings.changeLocationAlert
-                            showAlert = true
-                        } else {
-                            vpnManager.onSelectCountry(selecetdCountry: country)
-                        }
-                    }
-                }
-                .listStyle(InsetGroupedListStyle())
+                    .listStyle(InsetGroupedListStyle())
                 
                 Spacer()
             }
+            
             .navigationTitle(LocalizableStrings.vpnAppTitle)
             .alert(isPresented: $showAlert) {
                 Alert(
@@ -115,5 +109,25 @@ struct ContentView: View {
         case .disconnecting:
             return Color.gray
         }
+    }
+}
+struct CircleLoader: View {
+
+    // MARK: - Properties
+
+    @State private var angle:Double = 0.0
+
+    // MARK: - Body
+
+    var body: some View {
+        Circle()
+            .trim(from: 0.1,to: 1.0)
+            .stroke(style: StrokeStyle(lineWidth: 8,lineCap: .round,lineJoin: .round)).foregroundColor(.black)
+            .rotationEffect(Angle(degrees: angle))
+            .onAppear{
+                withAnimation(Animation.linear(duration: 4.0).repeatForever(autoreverses: false)) {
+                    angle = 360
+                }
+            }
     }
 }

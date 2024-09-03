@@ -1,2 +1,5 @@
 ${PODS_ROOT}/Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/CSV.swift/CSV.framework
+${BUILT_PRODUCTS_DIR}/ObjectMapper/ObjectMapper.framework
 ${PODS_ROOT}/OpenVPNXor/OpenVPNXor.framework

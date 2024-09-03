@@ -7,19 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A8F19AAA40602E60F3A61EB5 /* Pods_VPNSwiftUIDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5A811C602ACA8015705BB477 /* Pods_VPNSwiftUIDemo.framework */; };
+		0CCCEA554AE8D828D38EEB3B /* Pods_VPNSwiftUIDemo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C85E8602AE00D966FE9F8962 /* Pods_VPNSwiftUIDemo.framework */; };
+		C6B2D0DC2C8714A800F4D74A /* singapore.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C6B2D0DB2C8714A800F4D74A /* singapore.ovpn */; };
+		C6B2D0DE2C87167C00F4D74A /* south-korea.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C6B2D0DD2C87167C00F4D74A /* south-korea.ovpn */; };
+		C6B2D0E02C87174B00F4D74A /* united-kingdom.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C6B2D0DF2C87174B00F4D74A /* united-kingdom.ovpn */; };
+		C6B2D0E22C871A9100F4D74A /* canada.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C6B2D0E12C871A9100F4D74A /* canada.ovpn */; };
+		C6B2D0E42C871ABF00F4D74A /* germany.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C6B2D0E32C871ABF00F4D74A /* germany.ovpn */; };
 		C814A2A02C774339003AE6D8 /* CommonFunctionality.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814A29F2C774339003AE6D8 /* CommonFunctionality.swift */; };
-		C814A2B72C774DA8003AE6D8 /* london_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C814A2AE2C774DA8003AE6D8 /* london_tcp.ovpn */; };
-		C814A2BA2C774DA8003AE6D8 /* london.conf in Resources */ = {isa = PBXBuildFile; fileRef = C814A2B32C774DA8003AE6D8 /* london.conf */; };
-		C814A2C72C7766CC003AE6D8 /* milan_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C814A2C62C7766CC003AE6D8 /* milan_tcp.ovpn */; };
 		C814A2CC2C777C4D003AE6D8 /* LocalizableStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814A2CB2C777C4D003AE6D8 /* LocalizableStrings.swift */; };
 		C814A2CE2C777CFC003AE6D8 /* ResourcesStrings.swift in Sources */ = {isa = PBXBuildFile; fileRef = C814A2CD2C777CFC003AE6D8 /* ResourcesStrings.swift */; };
 		C81991652C7684CA00799622 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81991642C7684CA00799622 /* AppDelegate.swift */; };
 		C81991692C76880E00799622 /* VPNModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81991682C76880E00799622 /* VPNModel.swift */; };
 		C819916D2C76884700799622 /* VPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819916C2C76884700799622 /* VPNManager.swift */; };
 		C81991702C7688C400799622 /* OpenVPNManagerUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = C819916F2C7688C400799622 /* OpenVPNManagerUtil.swift */; };
-		C84B298D2C80A042000A8074 /* hungry_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C84B298B2C80A042000A8074 /* hungry_tcp.ovpn */; };
-		C84B29902C80A2A2000A8074 /* ireland_tcp.ovpn in Resources */ = {isa = PBXBuildFile; fileRef = C84B298F2C80A2A2000A8074 /* ireland_tcp.ovpn */; };
 		C8712DCC2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8712DCB2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift */; };
 		C8712DCE2C767F09005CE3DE /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8712DCD2C767F09005CE3DE /* ContentView.swift */; };
 		C8712DD02C767F0B005CE3DE /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C8712DCF2C767F0B005CE3DE /* Assets.xcassets */; };
@@ -27,8 +27,7 @@
 		C8712DE02C768108005CE3DE /* NetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C8712DDF2C768108005CE3DE /* NetworkExtension.framework */; };
 		C8712DE32C768108005CE3DE /* PacketTunnelProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8712DE22C768108005CE3DE /* PacketTunnelProvider.swift */; };
 		C8712DE82C768108005CE3DE /* VPNNetworkExtension.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = C8712DDD2C768108005CE3DE /* VPNNetworkExtension.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
-		C894232E2C80FAAF00A576A6 /* IPSecVPNManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = C894232D2C80FAAF00A576A6 /* IPSecVPNManager.swift */; };
-		CCE14F228BFBD37AE2EF51F4 /* Pods_VPNNetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 66BD73D38B9AED7993F5994E /* Pods_VPNNetworkExtension.framework */; };
+		DB2E2ABCF3B8F45095EF32D6 /* Pods_VPNNetworkExtension.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E894F4670107856AC86E67F /* Pods_VPNNetworkExtension.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,24 +55,24 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		15F46487EAFA45E524B82199 /* Pods-VPNNetworkExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNNetworkExtension.release.xcconfig"; path = "Target Support Files/Pods-VPNNetworkExtension/Pods-VPNNetworkExtension.release.xcconfig"; sourceTree = "<group>"; };
-		5A811C602ACA8015705BB477 /* Pods_VPNSwiftUIDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNSwiftUIDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		66BD73D38B9AED7993F5994E /* Pods_VPNNetworkExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNNetworkExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6DDE44EF973BE82DFB87C94B /* Pods-VPNNetworkExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNNetworkExtension.debug.xcconfig"; path = "Target Support Files/Pods-VPNNetworkExtension/Pods-VPNNetworkExtension.debug.xcconfig"; sourceTree = "<group>"; };
-		81A2E0254B1E8A6D1DA00D86 /* Pods-VPNSwiftUIDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwiftUIDemo.debug.xcconfig"; path = "Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		143D2725CF5CCDC89EB7EF21 /* Pods-VPNSwiftUIDemo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwiftUIDemo.debug.xcconfig"; path = "Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo.debug.xcconfig"; sourceTree = "<group>"; };
+		4A20B172D5DC0488C3519649 /* Pods-VPNNetworkExtension.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNNetworkExtension.release.xcconfig"; path = "Target Support Files/Pods-VPNNetworkExtension/Pods-VPNNetworkExtension.release.xcconfig"; sourceTree = "<group>"; };
+		5C32D885D7F00ECC35AC725B /* Pods-VPNSwiftUIDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwiftUIDemo.release.xcconfig"; path = "Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo.release.xcconfig"; sourceTree = "<group>"; };
+		6E894F4670107856AC86E67F /* Pods_VPNNetworkExtension.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNNetworkExtension.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C6B2D0DB2C8714A800F4D74A /* singapore.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = singapore.ovpn; sourceTree = "<group>"; };
+		C6B2D0DD2C87167C00F4D74A /* south-korea.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "south-korea.ovpn"; sourceTree = "<group>"; };
+		C6B2D0DF2C87174B00F4D74A /* united-kingdom.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "united-kingdom.ovpn"; sourceTree = "<group>"; };
+		C6B2D0E12C871A9100F4D74A /* canada.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = canada.ovpn; sourceTree = "<group>"; };
+		C6B2D0E32C871ABF00F4D74A /* germany.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = germany.ovpn; sourceTree = "<group>"; };
 		C814A29F2C774339003AE6D8 /* CommonFunctionality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonFunctionality.swift; sourceTree = "<group>"; };
-		C814A2AE2C774DA8003AE6D8 /* london_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = london_tcp.ovpn; sourceTree = "<group>"; };
-		C814A2B32C774DA8003AE6D8 /* london.conf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = london.conf; sourceTree = "<group>"; };
 		C814A2BF2C7759F5003AE6D8 /* VPNSwiftUIDemo.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNSwiftUIDemo.entitlements; sourceTree = "<group>"; };
-		C814A2C62C7766CC003AE6D8 /* milan_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = milan_tcp.ovpn; sourceTree = "<group>"; };
 		C814A2CB2C777C4D003AE6D8 /* LocalizableStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalizableStrings.swift; sourceTree = "<group>"; };
 		C814A2CD2C777CFC003AE6D8 /* ResourcesStrings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResourcesStrings.swift; sourceTree = "<group>"; };
 		C81991642C7684CA00799622 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C81991682C76880E00799622 /* VPNModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNModel.swift; sourceTree = "<group>"; };
 		C819916C2C76884700799622 /* VPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNManager.swift; sourceTree = "<group>"; };
 		C819916F2C7688C400799622 /* OpenVPNManagerUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpenVPNManagerUtil.swift; sourceTree = "<group>"; };
-		C84B298B2C80A042000A8074 /* hungry_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = hungry_tcp.ovpn; sourceTree = "<group>"; };
-		C84B298F2C80A2A2000A8074 /* ireland_tcp.ovpn */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = ireland_tcp.ovpn; sourceTree = "<group>"; };
+		C85E8602AE00D966FE9F8962 /* Pods_VPNSwiftUIDemo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_VPNSwiftUIDemo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8712DC82C767F09005CE3DE /* VPNSwiftUIDemo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = VPNSwiftUIDemo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C8712DCB2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VPNSwiftUIDemoApp.swift; sourceTree = "<group>"; };
 		C8712DCD2C767F09005CE3DE /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -84,8 +83,7 @@
 		C8712DE22C768108005CE3DE /* PacketTunnelProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PacketTunnelProvider.swift; sourceTree = "<group>"; };
 		C8712DE42C768108005CE3DE /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C8712DE52C768108005CE3DE /* VPNNetworkExtension.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = VPNNetworkExtension.entitlements; sourceTree = "<group>"; };
-		C894232D2C80FAAF00A576A6 /* IPSecVPNManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IPSecVPNManager.swift; sourceTree = "<group>"; };
-		F70274B00FA03FD2588F989A /* Pods-VPNSwiftUIDemo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNSwiftUIDemo.release.xcconfig"; path = "Target Support Files/Pods-VPNSwiftUIDemo/Pods-VPNSwiftUIDemo.release.xcconfig"; sourceTree = "<group>"; };
+		FFD762F0FEDF8CDE463F47D9 /* Pods-VPNNetworkExtension.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-VPNNetworkExtension.debug.xcconfig"; path = "Target Support Files/Pods-VPNNetworkExtension/Pods-VPNNetworkExtension.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -93,7 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A8F19AAA40602E60F3A61EB5 /* Pods_VPNSwiftUIDemo.framework in Frameworks */,
+				0CCCEA554AE8D828D38EEB3B /* Pods_VPNSwiftUIDemo.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -102,7 +100,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C8712DE02C768108005CE3DE /* NetworkExtension.framework in Frameworks */,
-				CCE14F228BFBD37AE2EF51F4 /* Pods_VPNNetworkExtension.framework in Frameworks */,
+				DB2E2ABCF3B8F45095EF32D6 /* Pods_VPNNetworkExtension.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -112,10 +110,10 @@
 		51AAAD11904B402B9626F0FA /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				6DDE44EF973BE82DFB87C94B /* Pods-VPNNetworkExtension.debug.xcconfig */,
-				15F46487EAFA45E524B82199 /* Pods-VPNNetworkExtension.release.xcconfig */,
-				81A2E0254B1E8A6D1DA00D86 /* Pods-VPNSwiftUIDemo.debug.xcconfig */,
-				F70274B00FA03FD2588F989A /* Pods-VPNSwiftUIDemo.release.xcconfig */,
+				FFD762F0FEDF8CDE463F47D9 /* Pods-VPNNetworkExtension.debug.xcconfig */,
+				4A20B172D5DC0488C3519649 /* Pods-VPNNetworkExtension.release.xcconfig */,
+				143D2725CF5CCDC89EB7EF21 /* Pods-VPNSwiftUIDemo.debug.xcconfig */,
+				5C32D885D7F00ECC35AC725B /* Pods-VPNSwiftUIDemo.release.xcconfig */,
 			);
 			path = Pods;
 			sourceTree = "<group>";
@@ -157,11 +155,11 @@
 		C8712DBF2C767F09005CE3DE = {
 			isa = PBXGroup;
 			children = (
-				C84B298F2C80A2A2000A8074 /* ireland_tcp.ovpn */,
-				C84B298B2C80A042000A8074 /* hungry_tcp.ovpn */,
-				C814A2C62C7766CC003AE6D8 /* milan_tcp.ovpn */,
-				C814A2B32C774DA8003AE6D8 /* london.conf */,
-				C814A2AE2C774DA8003AE6D8 /* london_tcp.ovpn */,
+				C6B2D0DD2C87167C00F4D74A /* south-korea.ovpn */,
+				C6B2D0DF2C87174B00F4D74A /* united-kingdom.ovpn */,
+				C6B2D0E32C871ABF00F4D74A /* germany.ovpn */,
+				C6B2D0DB2C8714A800F4D74A /* singapore.ovpn */,
+				C6B2D0E12C871A9100F4D74A /* canada.ovpn */,
 				C8712DCA2C767F09005CE3DE /* VPNSwiftUIDemo */,
 				C8712DE12C768108005CE3DE /* VPNNetworkExtension */,
 				C8712DDE2C768108005CE3DE /* Frameworks */,
@@ -209,8 +207,8 @@
 			isa = PBXGroup;
 			children = (
 				C8712DDF2C768108005CE3DE /* NetworkExtension.framework */,
-				66BD73D38B9AED7993F5994E /* Pods_VPNNetworkExtension.framework */,
-				5A811C602ACA8015705BB477 /* Pods_VPNSwiftUIDemo.framework */,
+				6E894F4670107856AC86E67F /* Pods_VPNNetworkExtension.framework */,
+				C85E8602AE00D966FE9F8962 /* Pods_VPNSwiftUIDemo.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -228,17 +226,8 @@
 		C894232B2C80FA9200A576A6 /* Protocols */ = {
 			isa = PBXGroup;
 			children = (
-				C894232C2C80FA9C00A576A6 /* IPSec */,
 			);
 			path = Protocols;
-			sourceTree = "<group>";
-		};
-		C894232C2C80FA9C00A576A6 /* IPSec */ = {
-			isa = PBXGroup;
-			children = (
-				C894232D2C80FAAF00A576A6 /* IPSecVPNManager.swift */,
-			);
-			path = IPSec;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -248,12 +237,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8712DD62C767F0B005CE3DE /* Build configuration list for PBXNativeTarget "VPNSwiftUIDemo" */;
 			buildPhases = (
-				37AD665091D358838B8583AE /* [CP] Check Pods Manifest.lock */,
+				6A44DD03F2423B9EDE6C4C11 /* [CP] Check Pods Manifest.lock */,
 				C8712DC42C767F09005CE3DE /* Sources */,
 				C8712DC52C767F09005CE3DE /* Frameworks */,
 				C8712DC62C767F09005CE3DE /* Resources */,
 				C8712DEC2C768108005CE3DE /* Embed Foundation Extensions */,
-				A46A761057B0B631DA7380A0 /* [CP] Embed Pods Frameworks */,
+				BEF09E5EDD131DCA13C18579 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -269,7 +258,7 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = C8712DE92C768108005CE3DE /* Build configuration list for PBXNativeTarget "VPNNetworkExtension" */;
 			buildPhases = (
-				0A80557E9D5CBD5DB8F04482 /* [CP] Check Pods Manifest.lock */,
+				0B21EA3EEA5B2ADAC57A6AB6 /* [CP] Check Pods Manifest.lock */,
 				C8712DD92C768108005CE3DE /* Sources */,
 				C8712DDA2C768108005CE3DE /* Frameworks */,
 				C8712DDB2C768108005CE3DE /* Resources */,
@@ -325,13 +314,13 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C814A2BA2C774DA8003AE6D8 /* london.conf in Resources */,
-				C814A2C72C7766CC003AE6D8 /* milan_tcp.ovpn in Resources */,
-				C814A2B72C774DA8003AE6D8 /* london_tcp.ovpn in Resources */,
+				C6B2D0E22C871A9100F4D74A /* canada.ovpn in Resources */,
+				C6B2D0E42C871ABF00F4D74A /* germany.ovpn in Resources */,
+				C6B2D0E02C87174B00F4D74A /* united-kingdom.ovpn in Resources */,
 				C8712DD32C767F0B005CE3DE /* Preview Assets.xcassets in Resources */,
-				C84B298D2C80A042000A8074 /* hungry_tcp.ovpn in Resources */,
-				C84B29902C80A2A2000A8074 /* ireland_tcp.ovpn in Resources */,
+				C6B2D0DC2C8714A800F4D74A /* singapore.ovpn in Resources */,
 				C8712DD02C767F0B005CE3DE /* Assets.xcassets in Resources */,
+				C6B2D0DE2C87167C00F4D74A /* south-korea.ovpn in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -345,7 +334,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		0A80557E9D5CBD5DB8F04482 /* [CP] Check Pods Manifest.lock */ = {
+		0B21EA3EEA5B2ADAC57A6AB6 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -367,7 +356,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		37AD665091D358838B8583AE /* [CP] Check Pods Manifest.lock */ = {
+		6A44DD03F2423B9EDE6C4C11 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -389,7 +378,7 @@
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
-		A46A761057B0B631DA7380A0 /* [CP] Embed Pods Frameworks */ = {
+		BEF09E5EDD131DCA13C18579 /* [CP] Embed Pods Frameworks */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -422,7 +411,6 @@
 				C8712DCC2C767F09005CE3DE /* VPNSwiftUIDemoApp.swift in Sources */,
 				C814A2CC2C777C4D003AE6D8 /* LocalizableStrings.swift in Sources */,
 				C814A2CE2C777CFC003AE6D8 /* ResourcesStrings.swift in Sources */,
-				C894232E2C80FAAF00A576A6 /* IPSecVPNManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -566,7 +554,7 @@
 		};
 		C8712DD72C767F0B005CE3DE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 81A2E0254B1E8A6D1DA00D86 /* Pods-VPNSwiftUIDemo.debug.xcconfig */;
+			baseConfigurationReference = 143D2725CF5CCDC89EB7EF21 /* Pods-VPNSwiftUIDemo.debug.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -600,7 +588,7 @@
 		};
 		C8712DD82C767F0B005CE3DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = F70274B00FA03FD2588F989A /* Pods-VPNSwiftUIDemo.release.xcconfig */;
+			baseConfigurationReference = 5C32D885D7F00ECC35AC725B /* Pods-VPNSwiftUIDemo.release.xcconfig */;
 			buildSettings = {
 				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -634,7 +622,7 @@
 		};
 		C8712DEA2C768108005CE3DE /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 6DDE44EF973BE82DFB87C94B /* Pods-VPNNetworkExtension.debug.xcconfig */;
+			baseConfigurationReference = FFD762F0FEDF8CDE463F47D9 /* Pods-VPNNetworkExtension.debug.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VPNNetworkExtension/VPNNetworkExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
@@ -662,7 +650,7 @@
 		};
 		C8712DEB2C768108005CE3DE /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 15F46487EAFA45E524B82199 /* Pods-VPNNetworkExtension.release.xcconfig */;
+			baseConfigurationReference = 4A20B172D5DC0488C3519649 /* Pods-VPNNetworkExtension.release.xcconfig */;
 			buildSettings = {
 				CODE_SIGN_ENTITLEMENTS = VPNNetworkExtension/VPNNetworkExtension.entitlements;
 				CODE_SIGN_STYLE = Automatic;
