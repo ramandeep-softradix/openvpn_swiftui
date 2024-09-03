@@ -119,6 +119,18 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		C6B2D0E82C873E2600F4D74A /* Servers */ = {
+			isa = PBXGroup;
+			children = (
+				C6B2D0DD2C87167C00F4D74A /* south-korea.ovpn */,
+				C6B2D0DF2C87174B00F4D74A /* united-kingdom.ovpn */,
+				C6B2D0E32C871ABF00F4D74A /* germany.ovpn */,
+				C6B2D0DB2C8714A800F4D74A /* singapore.ovpn */,
+				C6B2D0E12C871A9100F4D74A /* canada.ovpn */,
+			);
+			path = Servers;
+			sourceTree = "<group>";
+		};
 		C814A2CA2C777C33003AE6D8 /* Constants */ = {
 			isa = PBXGroup;
 			children = (
@@ -156,11 +168,6 @@
 		C8712DBF2C767F09005CE3DE = {
 			isa = PBXGroup;
 			children = (
-				C6B2D0DD2C87167C00F4D74A /* south-korea.ovpn */,
-				C6B2D0DF2C87174B00F4D74A /* united-kingdom.ovpn */,
-				C6B2D0E32C871ABF00F4D74A /* germany.ovpn */,
-				C6B2D0DB2C8714A800F4D74A /* singapore.ovpn */,
-				C6B2D0E12C871A9100F4D74A /* canada.ovpn */,
 				C8712DCA2C767F09005CE3DE /* VPNSwiftUIDemo */,
 				C8712DE12C768108005CE3DE /* VPNNetworkExtension */,
 				C8712DDE2C768108005CE3DE /* Frameworks */,
@@ -181,6 +188,7 @@
 		C8712DCA2C767F09005CE3DE /* VPNSwiftUIDemo */ = {
 			isa = PBXGroup;
 			children = (
+				C6B2D0E82C873E2600F4D74A /* Servers */,
 				C6B2D0E72C87360A00F4D74A /* Info.plist */,
 				C894232B2C80FA9200A576A6 /* Protocols */,
 				C814A2CA2C777C33003AE6D8 /* Constants */,
